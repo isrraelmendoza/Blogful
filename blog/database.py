@@ -1,23 +1,17 @@
-import datetime
-from sqlalchemy import Column, Integer, String, Text, DateTime
+"""
+This file is used for setting up a connection to the database, which will be used to store our blog posts
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from . import app
 
+from blog import app
+"""
+Basic boilerplate code for using SQLAlchemy to work with a database
+"""
+#create an engine, to talk to the database located at the database URI, this URI is specified in the config.py file
 engine = create_engine(app.config["SQLALCHEMY_DATABASE_URI"])
+#create a declaritive_base, then start a new session
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
-
-class Entry(Base):
-    __tablename__ = "entries"
-    
-    id = Column(Integer, primary_key=True)
-    title = Column(String(1024))
-    content = Column(Text)
-    datetime = Column(DateTime, default=datetime.datetime.now)
-
-Base.metadata.create_all(engine)
-    
-

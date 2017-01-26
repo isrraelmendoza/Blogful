@@ -3,6 +3,7 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
+import blog
 
 from flask.cli import main
 
