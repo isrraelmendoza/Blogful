@@ -6,7 +6,7 @@ import datetime
 
 from sqlalchemy import Column, Integer, String, Sequence, Text, DateTime
 
-from database import Base, engine
+from .database import Base, engine
 
 #create a new class, which inherits from the declaritive base object
 class Post(Base):

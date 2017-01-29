@@ -1,8 +1,8 @@
 from flask import render_template
 
 from blog import app
-from database import session
-from models import Post
+from .database import session
+from .models import Post
 import mistune
 from flask import request, redirect, url_for
 
@@ -10,6 +10,7 @@ from flask import request, redirect, url_for
 #new route created to take us to a specific page of content
 @app.route("/page/<int:page>")
 def posts(page=1, paginate_by=10):
+
 	"""2 args: 
 	1) page - a page number
 	2) paginate_by - indicates how many items should be on each page
@@ -26,7 +27,7 @@ def posts(page=1, paginate_by=10):
 	end = start + paginate_by
 
 	#total number of (pages of content)
-	total_pages = (count - 1) / (paginate_by) + 1
+	total_pages = (count + 1) / (paginate_by) + 1
 	#is there a page after the current one
 	has_next = page_index < (total_pages - 1)
 	#is there a page before the current one
@@ -46,6 +47,7 @@ def posts(page=1, paginate_by=10):
 		page=page,
 		total_pages=total_pages
 		)
+
 
 """ New view created to display the form, structured in add_post.html"""
 

@@ -20,7 +20,7 @@ manager = Manager(app)
 @manager.command
 def run():
 	#try to retrieve a port number from environment, falling back to 5000 if unvailable
-	port = int(os.environ.get('PORT', 5000))
+	port = int(os.environ.get('PORT', 8080))
 	#run the development server, telling it to listen to the port retrieved
 	app.run(host='0.0.0.0', port=port)
 	"""
