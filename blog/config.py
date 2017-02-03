@@ -14,3 +14,7 @@ class DevelopmentConfig(object):
 	Not good ide to store key in application configuration,
 	use os.environ.get to obtain the secret key from an environmental variable
 	"""
+class TestingConfig(object):
+	SQLALCHEMY_DATABASE_URI = "postgresql://ubuntu:thinkful@localhost:5432/blogful-test"
+	DEBUG = False
+	SECRET_KEY = "Not secret"
